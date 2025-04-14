@@ -5,8 +5,26 @@ from .forms import AdminLoginForm, ProductForm
 from .models import Product
 
 def home(request):
+    query = request.GET.get('q', '')
+    category = request.GET.get('category', '')
+    min_price = request.GET.get('min_price', '')
+    max_price = request.GET.get('max_price', '')
+
     products = Product.objects.all()
-    return render(request, 'Home.html', {'products': products})
+
+    if query:
+        products = products.filter(title__icontains=query)
+    if category:
+        products = products.filter(category=category)
+    if min_price:
+        products = products.filter(price__gte=min_price)
+    if max_price:
+        products = products.filter(price__lte=max_price)
+
+    return render(request, 'Home.html', {
+        'products': products,
+        'categories': Product.CATEGORY_CHOICES
+    })
 
 def admin_login(request):
     if request.method == 'POST':

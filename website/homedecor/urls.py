@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-   path('', views.home, name='home'),  # Updated to make home the root URL
+   path('', views.home, name='home'),  # Home view with search functionality
    path('login', views.admin_login, name='admin_login'),
    path('dashboard/', views.admin_dashboard, name='admin_dashboard'),  # Added admin_dashboard URL
    path('add-product/', views.add_product, name='add_product'),
