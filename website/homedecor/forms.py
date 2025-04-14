@@ -16,5 +16,9 @@ class ProductForm(forms.ModelForm):
         model = Product
         fields = ['title', 'description', 'price', 'category', 'embedded_image']
         widgets = {
-            'embedded_image': forms.Textarea(attrs={'rows': 3}),
+            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter product title'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Enter product description', 'rows': 4}),
+            'price': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter product price'}),
+            'category': forms.Select(attrs={'class': 'form-control'}),
+            'embedded_image': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Enter embedded image URL', 'rows': 3}),
         }
