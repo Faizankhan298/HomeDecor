@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Student Details</h1>
+    <p>Student Name: {{ student.name }}</p>
+    <p>Student Roll No: {{ student.roll_number }}</p>
+    <p>Student Course: {{student.course}}</p>
+
+    <h2>Marks</h2>
+    <table style="border: 1px">
+      <tr>
+        <th>Subject</th>
+        <th>Marks</th>
+      </tr>
+      {% for subject, marks in student.marks.items %}
+      <tr>
+        <td>{{ subject }}</td>
+        <td>{{ marks }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
