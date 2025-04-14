@@ -1,11 +1,33 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
+    <title>Home - Indian Rexine House</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
   </head>
   <body>
-    <h1>Welcome to My Django App in home</h1>
+    {% include 'navbar.html' %}
+    <header>
+      <h1>Welcome to Indian Rexine House</h1>
+      <p>Explore our wide range of products</p>
+    </header>
+    <main>
+      <div class="container">
+        <h2>Our Products</h2>
+        <div class="product-grid">
+          {% for product in products %}
+          <div class="product-card">
+            <h3>{{ product.title }}</h3>
+            <p>{{ product.description }}</p>
+            <p><strong>Price:</strong> ₹{{ product.price }}</p>
+            <div class="product-embed">{{ product.embedded_image|safe }}</div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </main>
+    {% include 'Footer.html' %}
   </body>
 </html>
