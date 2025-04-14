@@ -1,16 +1,13 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit Product</title>
-  </head>
-  <body>
-    <h1>Edit Product: {{ product.title }}</h1>
-    <form method="post">
-      {% csrf_token %} {{ form.as_p }}
-      <button type="submit">Update</button>
-    </form>
-  </body>
-</html>
+{% extends 'base.html' %} 
+{% load static %} 
+{% block title %} Edit Product {%endblock %} 
+{% block content %}
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Edit Product: {{ product.title }}</h1>
+  <form method="post" class="needs-validation" novalidate>
+    {% csrf_token %}
+    <div class="form-group">{{ form.as_p }}</div>
+    <button type="submit" class="btn btn-primary w-100 mt-3">Update</button>
+  </form>
+</div>
+{% endblock %}
