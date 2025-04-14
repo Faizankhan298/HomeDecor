@@ -1,0 +1,87 @@
+{% extends 'base.html' %} {% load static %} {% block title %} About - Indian
+Rexine House {% endblock %} {% block content %}
+<div class="container mt-5">
+  <div class="row text-center">
+    <div class="col-md-4">
+      <h2>Vision</h2>
+      <p>
+        To be the leading provider of premium home comfort products, enhancing
+        the well-being of our customers with quality, comfort, and style.
+      </p>
+    </div>
+    <div class="col-md-4">
+      <h2>Mission</h2>
+      <p>
+        We aim to deliver exceptional value to our customers by combining
+        expertise, technology, and commitment to excellence.
+      </p>
+    </div>
+    <div class="col-md-4">
+      <h2>Slogan</h2>
+      <p>"Comfort Redefined, Quality Delivered."</p>
+    </div>
+  </div>
+
+  <div class="row align-items-center mt-5">
+    <div class="col-md-6">
+      <h1>About Shop</h1>
+      <p class="lead">
+        We are committed to delivering top-notch services and products that
+        align with the needs of our clients and the values of our community.
+      </p>
+      <p>
+        Established in 1992, our shop has been a trusted provider of home
+        essentials for over 30 years. Specializing in quality mattresses,
+        pillows, curtains, and other home necessities, we have built a
+        reputation for reliability and comfort. With decades of experience, we
+        understand the importance of creating cozy, welcoming spaces in every
+        home. Now, as we expand our reach online, we aim to offer an engaging,
+        seamless shopping experience, allowing you to browse our carefully
+        curated products from the comfort of your home. Our online platform will
+        ensure you have easy access to products, sales, and many more.
+      </p>
+      <a href="{% url 'contact' %}" class="btn btn-outline-secondary"
+        >Contact Us</a
+      >
+      <a href="{% url 'home' %}" class="btn btn-primary">HomePage</a>
+    </div>
+    <div class="col-md-6">
+      <img
+        src="{% static 'shop.jpg' %}"
+        alt="Shop Image"
+        class="img-fluid rounded"
+      />
+    </div>
+  </div>
+
+  <div class="row align-items-center mt-5">
+    <div class="col-md-6">
+      <h1>About Owner</h1>
+      <p class="lead">
+        Zahir Ahmad Khan, an experienced entrepreneur with a passion for
+        business and innovation, has been the driving force behind our Indian
+        Rexine House success.
+      </p>
+      <p>
+        Zahir Ahmad Khan began his journey from a humble shop, driven by passion
+        and hard work. Over time, he expanded his business, acquiring three
+        large shops within the same complex—one dedicated to the main retail
+        operations and two others for stock management and customer tours. In
+        addition to this, he also owns a spacious garage with a two-story
+        building at a nearby location. Throughout his career, Zahir consistently
+        exceeded sales targets, earning recognition from Sleepwell and winning
+        prestigious international tours to destinations like Singapore,
+        Thailand, Dubai, and Moscow. His dedication and achievements have made
+        him a respected figure in the industry.
+      </p>
+    </div>
+    <div class="col-md-6">
+      <img
+        src="{% static 'owner.jpg' %}"
+        alt="Owner Image"
+        class="img-fluid rounded"
+      />
+    </div>
+  </div>
+</div>
+{% endblock %}

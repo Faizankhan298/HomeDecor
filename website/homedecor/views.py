@@ -51,3 +51,9 @@ def delete_product(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     product.delete()
     return redirect('admin_dashboard')
+
+def about(request):
+    return render(request, 'About.html')
+
+def contact(request):
+    return render(request, 'Contact.html')  # Corrected template filename

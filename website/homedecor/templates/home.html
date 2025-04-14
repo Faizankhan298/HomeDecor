@@ -1,33 +1,26 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home - Indian Rexine House</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-  </head>
-  <body>
-    {% include 'navbar.html' %}
-    <header>
-      <h1>Welcome to Indian Rexine House</h1>
-      <p>Explore our wide range of products</p>
-    </header>
-    <main>
-      <div class="container">
-        <h2>Our Products</h2>
-        <div class="product-grid">
-          {% for product in products %}
-          <div class="product-card">
-            <h3>{{ product.title }}</h3>
-            <p>{{ product.description }}</p>
+{% extends 'base.html' %} {% load static %} {% block title %}Home - Indian
+Rexine House{% endblock %} {% block content %}
+<header class="text-center my-5">
+  <h1>Welcome to Indian Rexine House</h1>
+  <p>Explore our wide range of products</p>
+</header>
+<main>
+  <div class="container">
+    <h2 class="text-center mb-4">Our Products</h2>
+    <div class="row">
+      {% for product in products %}
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h3 class="card-title">{{ product.title }}</h3>
+            <p class="card-text">{{ product.description }}</p>
             <p><strong>Price:</strong> ₹{{ product.price }}</p>
             <div class="product-embed">{{ product.embedded_image|safe }}</div>
           </div>
-          {% endfor %}
         </div>
       </div>
-    </main>
-    {% include 'Footer.html' %}
-  </body>
-</html>
+      {% endfor %}
+    </div>
+  </div>
+</main>
+{% endblock %}
