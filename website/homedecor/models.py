@@ -17,7 +17,7 @@ class Product(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
-    embedded_image = models.TextField()  # To store the embedded 3D image link
+    embedded_image = models.TextField()  
 
     def __str__(self):
         return self.title

@@ -67,4 +67,56 @@ Rexine House{% endblock %} {% block content %}
     </div>
   </div>
 </main>
+
+<!-- Chatbot Popup -->
+<div id="chatbot-popup" style="position: fixed; bottom: 20px; right: 20px; width: 300px; display: none; background: white; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+  <div style="background: #007bff; color: white; padding: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+    <strong>Chatbot</strong>
+    <button onclick="toggleChatbot()" style="float: right; background: none; border: none; color: white; font-size: 16px; cursor: pointer;">&times;</button>
+  </div>
+  <div id="chatbot-messages" style="padding: 10px; height: 200px; overflow-y: auto;"></div>
+  <div style="display: flex; border-top: 1px solid #ccc;">
+    <input id="chatbot-input" type="text" placeholder="Type your question..." style="flex: 1; border: none; padding: 10px;">
+    <button onclick="sendMessage()" style="background: #007bff; color: white; border: none; padding: 10px; cursor: pointer;">Send</button>
+  </div>
+</div>
+<button id="chatbot-toggle" onclick="toggleChatbot()" style="position: fixed; bottom: 20px; right: 20px; background: #007bff; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;">Chat with us!</button>
+
+<script>
+  function toggleChatbot() {
+    const popup = document.getElementById('chatbot-popup');
+    const toggleButton = document.getElementById('chatbot-toggle');
+    if (popup.style.display === 'none') {
+      popup.style.display = 'block';
+      toggleButton.style.display = 'none';
+    } else {
+      popup.style.display = 'none';
+      toggleButton.style.display = 'block';
+    }
+  }
+
+  function sendMessage() {
+    const input = document.getElementById('chatbot-input');
+    const messages = document.getElementById('chatbot-messages');
+    const question = input.value.trim();
+    if (question) {
+      const userMessage = document.createElement('div');
+      userMessage.textContent = "You: " + question;
+      userMessage.style.marginBottom = '10px';
+      messages.appendChild(userMessage);
+
+      fetch(`/chatbot-response/?question=${encodeURIComponent(question)}`)
+        .then(response => response.json())
+        .then(data => {
+          const botMessage = document.createElement('div');
+          botMessage.textContent = "Bot: " + data.response;
+          botMessage.style.marginBottom = '10px';
+          messages.appendChild(botMessage);
+          messages.scrollTop = messages.scrollHeight;
+        });
+
+      input.value = '';
+    }
+  }
+</script>
 {% endblock %}
